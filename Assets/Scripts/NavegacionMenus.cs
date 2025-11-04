@@ -15,7 +15,7 @@ public class NavegacionMenus : MonoBehaviour
         // Funciona con ESC en PC y con botón Atrás en Android real
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Si no estamos ya en el menú principal
+            // Del MainMenu se sale pulsando botón salir no con atrás.
             if (SceneManager.GetActiveScene().name == escenaMiniJuegos || SceneManager.GetActiveScene().name == escenaCreditos)
             {
                 SceneManager.LoadScene(escenaMainMenu);
