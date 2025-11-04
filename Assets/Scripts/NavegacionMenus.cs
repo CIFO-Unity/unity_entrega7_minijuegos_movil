@@ -1,9 +1,10 @@
+using System.Data;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NavegacionMenus : MonoBehaviour
 {
-    private string escenaJugar = "Jugar";
 
     private string escenaCreditos = "Creditos";
 
@@ -14,11 +15,14 @@ public class NavegacionMenus : MonoBehaviour
     private string escenaFelix = "Felix";
     private string escenaMainMenu = "MainMenu";
 
-    public void CargarEscenaJugar()
-    {
-        SceneManager.LoadScene(escenaJugar);
-    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(escenaMainMenu);
+        }
+    }
     public void CargarEscenaAlbert()
     {
         SceneManager.LoadScene(escenaAlbert);
@@ -44,10 +48,7 @@ public class NavegacionMenus : MonoBehaviour
         SceneManager.LoadScene(escenaMiniJuegos);
     }
 
-    public void VolverAlMainMenu()
-    {
-        SceneManager.LoadScene(escenaMainMenu);
-    }
+
 
     public void SalirDelJuego()
     {
@@ -61,5 +62,5 @@ public class NavegacionMenus : MonoBehaviour
 #endif
     }
 
-    
+
 }
