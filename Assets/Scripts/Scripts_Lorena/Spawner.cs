@@ -8,14 +8,20 @@ public class Spawner : MonoBehaviour
     public string obstacleTag = "Obstacle";
 
     [Header("Spawn params")]
-    public float spawnInterval = 0.9f;
-    public float spawnXRange = 4.6f;
-    public float spawnYStart = -11.6f; 
-    public float obstacleSpeed = 3f;
+public float spawnInterval = 0.6f;
+public float spawnXRange = 4.6f;
+public float spawnYStart = -11.6f; 
+public float obstacleSpeed = 3f;
+
+[Header("Difficulty")]
+public float intervalDecreaseRate = 0.04f; // se acelera más deprisa
+public float minSpawnInterval = 0.25f;     // límite inferior más bajo
+
 
     void Start()
     {
         StartCoroutine(SpawnLoop());
+        StartCoroutine(IncreaseDifficulty());
     }
 
     IEnumerator SpawnLoop()
@@ -24,6 +30,15 @@ public class Spawner : MonoBehaviour
         {
             SpawnPattern();
             yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
+    IEnumerator IncreaseDifficulty()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f); // cada 5 segundos de juego
+            spawnInterval = Mathf.Max(minSpawnInterval, spawnInterval - intervalDecreaseRate);
         }
     }
 
