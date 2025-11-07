@@ -6,7 +6,7 @@ public class NavegacionMenus : MonoBehaviour
     private string escenaMainMenu = "MainMenu";
     private string escenaCreditos = "Creditos";
     private string escenaMiniJuegos = "MiniJuegos";
-    private string escenaAlbert = "Albert";
+    private string escenaAlbert = "MainMenuAlbert";
     private string escenaLorena = "Lorena";
     private string escenaFelix = "Felix";
 

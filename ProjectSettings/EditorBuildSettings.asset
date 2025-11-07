@@ -18,14 +18,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 078b3dd34786643c1812564a11c1b454
   - enabled: 1
-    path: Assets/Scenes/Albert.unity
-    guid: d5319021b2dd2c44fb2140cfc5d90b01
-  - enabled: 1
     path: Assets/Scenes/Lorena.unity
     guid: cb1c1e30bbaa4c942927018b7f7ff455
   - enabled: 1
     path: Assets/Scenes/Felix.unity
     guid: 93ddf789a83701643b38d1b6894620d0
+  - enabled: 1
+    path: Assets/Scenes/Albert/MainMenuAlbert.unity
+    guid: a1ec27dedd1e049ffb6f9c8576d9b019
+  - enabled: 1
+    path: Assets/Scenes/Albert/MinijuegoAlbert.unity
+    guid: 114daaeed126d44c5a1a666fb29c3fe8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
