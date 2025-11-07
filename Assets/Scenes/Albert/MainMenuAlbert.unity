@@ -685,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248832354}
   - component: {fileID: 1248832353}
-  - component: {fileID: 1248832352}
+  - component: {fileID: 1248832355}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -693,19 +693,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1248832352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248832351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d78d34956634c0793b45f000ea300f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backSceneName: MiniJuegos
 --- !u!114 &1248832353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +722,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1248832355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248832351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6fb11a575327f4c9106d80e5c24fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1456535628
 GameObject:
   m_ObjectHideFlags: 0
