@@ -1,0 +1,26 @@
+Resumen del Script CameraFixedWidth
+
+
+Este script mantiene un ancho constante de visualización en una cámara ortográfica de Unity, independientemente del aspect ratio o resolución de la pantalla del dispositivo.
+
+
+Objetivo: 
+
+Asegurar que siempre se vean exactamente 5 unidades de ancho del mundo (configurable), sin importar si el dispositivo es más ancho o más alto. Dicho de otro modo, se quiere que el juego sea responsive horizontalmente: que siempre se vea la misma cantidad de información horizontal, independientemente del dispositivo.
+
+
+Método:
+
+Ajusta dinámicamente el orthographicSize de la cámara según el aspect ratio de la pantalla.
+
+
+Adaptabilidad:
+
+Detecta cambios en tiempo real (rotación del dispositivo, cambio de resolución) y reajusta automáticamente la cámara.
+
+
+Uso práctico:
+
+Se necesita que ciertos elementos (como las manos moviéndose horizontalmente) siempre ocupen el mismo espacio en pantalla, evitando que en dispositivos más anchos se vea demasiado o en dispositivos más estrechos se corte el contenido.
+
+Se garantiza que el área de juego donde se mueve la mano siempre sea visible completamente, sin importar si se juega en un iPhone, iPad, o dispositivo Android con diferentes proporciones de pantalla.
