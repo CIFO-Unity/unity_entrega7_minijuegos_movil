@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateScoreUI()
     {
-        if (scoreText) scoreText.text = score.ToString();
+        if (scoreText) scoreText.text = "Score: " + score.ToString();
     }
 
     public void OnPlayerDeath()
