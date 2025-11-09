@@ -40,8 +40,8 @@ public class GameManager : MonoBehaviour
    public void OnPlayerDeath()
     {
         // Detener el spawner
-        var spawner = FindObjectOfType<Spawner>();
-        if (spawner) spawner.enabled = false;
+        /*var spawner = FindObjectOfType<Spawner>();
+        if (spawner) spawner.enabled = false;*/
 
         // Activar panel de Game Over
         if (gameOverPanel) gameOverPanel.SetActive(true);

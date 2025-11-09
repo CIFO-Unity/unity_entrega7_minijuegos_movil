@@ -3,25 +3,23 @@ using UnityEngine;
 public class Ring : MonoBehaviour
 {
     public float speed = 3f;
-    public string poolTag = "Ring";
     bool scored = false;
     public float despawnY = 11.6f;
     public bool playerDead = false;
-
-    void OnEnable()
-    {
-        scored = false;
-    }
 
     void Update()
     {
         if (playerDead) return;
 
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
-
-        if (transform.position.y > despawnY)
+        // Solo moverse si está en la zona de juego (por encima del pool)
+        if (transform.position.y > ObjectPooler.Instance.poolY)
         {
-            ReturnToPool();
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+            if (transform.position.y > despawnY)
+            {
+                ReturnToPool();
+            }
         }
     }
 
@@ -33,12 +31,13 @@ public class Ring : MonoBehaviour
             scored = true;
             GameManager.Instance.AddScore(1);
             // Opcional: play VFX/SFX
-            //ReturnToPool();
+            ReturnToPool();
         }
     }
 
     void ReturnToPool()
     {
-        ObjectPooler.Instance.ReturnToPool(poolTag, gameObject);
+        scored = false;
+        ObjectPooler.Instance.ReturnToPool(gameObject);
     }
 }

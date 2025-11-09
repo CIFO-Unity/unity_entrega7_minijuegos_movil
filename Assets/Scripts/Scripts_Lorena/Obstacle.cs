@@ -3,19 +3,22 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public float speed = 3f;
-    public string poolTag = "Obstacle";
     public float despawnY = 11.6f;
-     public bool playerDead = false;
+    public bool playerDead = false;
 
     void Update()
     {
         if (playerDead) return;
-         
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-        if (transform.position.y > despawnY)
+        // Solo moverse si está en la zona de juego (por encima del pool)
+        if (transform.position.y > ObjectPooler.Instance.poolY)
         {
-            ObjectPooler.Instance.ReturnToPool(poolTag, gameObject);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+
+            if (transform.position.y > despawnY)
+            {
+                ObjectPooler.Instance.ReturnToPool(gameObject);
+            }
         }
     }
 }
