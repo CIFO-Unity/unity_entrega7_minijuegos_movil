@@ -275,6 +275,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Ring
   despawnY: 7
+  playerDead: 0
 --- !u!4 &295199758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6337336160968274750, guid: 588c170f7ab9db94faacbc7bd591ebde, type: 3}
@@ -428,6 +429,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Obstacle
   despawnY: 7
+  playerDead: 0
 --- !u!4 &337372135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6693316315182249569, guid: 347da4ead37de2e44bee3f581b30cd0d, type: 3}
@@ -762,6 +764,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Obstacle
   despawnY: 7
+  playerDead: 0
 --- !u!4 &443264239 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6693316315182249569, guid: 347da4ead37de2e44bee3f581b30cd0d, type: 3}
@@ -787,6 +790,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Ring
   despawnY: 7
+  playerDead: 0
 --- !u!4 &685873249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6337336160968274750, guid: 588c170f7ab9db94faacbc7bd591ebde, type: 3}
@@ -1240,6 +1244,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Obstacle
   despawnY: 7
+  playerDead: 0
 --- !u!4 &1282076389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6693316315182249569, guid: 347da4ead37de2e44bee3f581b30cd0d, type: 3}
@@ -1413,6 +1418,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1589383877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1589383879}
+  - component: {fileID: 1589383878}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1589383878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589383877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6fb11a575327f4c9106d80e5c24fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1589383879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589383877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 292.4713, y: 1412.2633, z: -1.88736}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742293748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1603,7 @@ MonoBehaviour:
   speed: 3
   poolTag: Ring
   despawnY: 7
+  playerDead: 0
 --- !u!4 &1934070323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6337336160968274750, guid: 588c170f7ab9db94faacbc7bd591ebde, type: 3}
@@ -1833,3 +1883,4 @@ SceneRoots:
   - {fileID: 838188718}
   - {fileID: 893566219}
   - {fileID: 2018364334}
+  - {fileID: 1589383879}
