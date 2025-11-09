@@ -40,7 +40,7 @@ public class ObjectPooler : MonoBehaviour
             ResetToPool(obstacle.gameObject);
         }
 
-        Debug.Log($"Pool inicializado: {ringPool.Count} Rings, {obstaclePool.Count} Obstacles");
+        //Debug.Log($"Pool inicializado: {ringPool.Count} Rings, {obstaclePool.Count} Obstacles");
     }
 
     public GameObject GetRingFromPool()
@@ -53,7 +53,7 @@ public class ObjectPooler : MonoBehaviour
             return availableRing.gameObject;
         }
 
-        Debug.LogWarning("No hay Rings disponibles en el pool");
+        //Debug.LogWarning("No hay Rings disponibles en el pool");
         return null;
     }
 
@@ -67,7 +67,7 @@ public class ObjectPooler : MonoBehaviour
             return availableObstacle.gameObject;
         }
 
-        Debug.LogWarning("No hay Obstacles disponibles en el pool");
+        //Debug.LogWarning("No hay Obstacles disponibles en el pool");
         return null;
     }
 

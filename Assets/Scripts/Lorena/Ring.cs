@@ -31,7 +31,7 @@ public class Ring : MonoBehaviour
             scored = true;
             GameManager.Instance.AddScore(1);
             // Opcional: play VFX/SFX
-            ReturnToPool();
+            //ReturnToPool();
         }
     }
 
