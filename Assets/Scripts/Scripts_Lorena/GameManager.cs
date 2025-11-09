@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public GameObject gameOverPanel;
     public TMP_Text bestText;
+    public TMP_Text countText;
 
     void Awake()
     {
@@ -32,7 +33,10 @@ public class GameManager : MonoBehaviour
     void UpdateScoreUI()
     {
         if (scoreText) scoreText.text = "Score: " + score.ToString();
+
+        if (countText) countText.text = "Score: " + score.ToString();
     }
+    
 
    public void OnPlayerDeath()
 {
