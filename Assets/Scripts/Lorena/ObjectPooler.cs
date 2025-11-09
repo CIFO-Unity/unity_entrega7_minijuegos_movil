@@ -26,8 +26,8 @@ public class ObjectPooler : MonoBehaviour
     void InitializePool()
     {
         // Encontrar todos los Rings y Obstacles en la escena
-        ringPool = FindObjectsOfType<Ring>().ToList();
-        obstaclePool = FindObjectsOfType<Obstacle>().ToList();
+        ringPool = FindObjectsByType<Ring>(FindObjectsSortMode.None).ToList();
+        obstaclePool = FindObjectsByType<Obstacle>(FindObjectsSortMode.None).ToList();
 
         // Colocar todos en la zona de pool (fuera de pantalla)
         foreach (Ring ring in ringPool)

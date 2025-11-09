@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
    public void OnPlayerDeath()
     {
         // Detener el spawner
-        var spawner = FindObjectOfType<ItemSpawner>();
+        ItemSpawner spawner = FindFirstObjectByType<ItemSpawner>();
         if (spawner) spawner.enabled = false;
 
         // Activar panel de Game Over
@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour
         if (bestText) bestText.text = "Best: " + PlayerPrefs.GetInt("best", 0);
 
         // Buscar todos los objetos Ring y cambiar su variable playerDead
-        Ring[] allRings = FindObjectsOfType<Ring>();
+        Ring[] allRings = FindObjectsByType<Ring>(FindObjectsSortMode.None);
         foreach (Ring ring in allRings)
         {
             ring.playerDead = true;
         }
 
         // Buscar todos los objetos Ring y cambiar su variable playerDead
-        Obstacle[] allObstacles = FindObjectsOfType<Obstacle>();
+        Obstacle[] allObstacles = FindObjectsByType<Obstacle>(FindObjectsSortMode.None);
         foreach (Obstacle obstacle in allObstacles)
         {
             obstacle.playerDead = true;
