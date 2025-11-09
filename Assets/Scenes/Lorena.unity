@@ -1767,7 +1767,7 @@ MonoBehaviour:
   initialSpawnInterval: 1.5
   minSpawnInterval: 0.5
   difficultyIncreaseRate: 0.03
-  ringProbability: 0.5
+  ringProbability: 0.6
   playerDead: 0
 --- !u!4 &957665443
 Transform:
