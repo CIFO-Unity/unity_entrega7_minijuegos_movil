@@ -18,13 +18,4 @@ public class Obstacle : MonoBehaviour
             ObjectPooler.Instance.ReturnToPool(poolTag, gameObject);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Player"))
-        {
-            var player = collision.collider.GetComponent<PlayerController>();
-            if (player != null) player.Die();
-        }
-    }
 }

@@ -89,15 +89,6 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.OnPlayerDeath();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!isAlive) return;
-        if (collision.collider.CompareTag("Obstacle"))
-        {
-            Die();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isAlive) return;
