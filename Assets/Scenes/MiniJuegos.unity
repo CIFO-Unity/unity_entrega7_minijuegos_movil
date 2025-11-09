@@ -1056,6 +1056,7 @@ GameObject:
   - component: {fileID: 1072495609}
   - component: {fileID: 1072495611}
   - component: {fileID: 1072495610}
+  - component: {fileID: 1072495612}
   m_Layer: 5
   m_Name: PencilRed_Image
   m_TagString: Untagged
@@ -1120,6 +1121,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072495608}
   m_CullTransparentMesh: 1
+--- !u!114 &1072495612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072495608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01807c542fa7ec94bb4813f91b373f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 15}
+  rotateInterval: 0.5
+  stayRotatedTime: 1
 --- !u!1 &1283373807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1183,7 @@ GameObject:
   - component: {fileID: 1389187410}
   - component: {fileID: 1389187412}
   - component: {fileID: 1389187411}
+  - component: {fileID: 1389187413}
   m_Layer: 5
   m_Name: PencilGreen_Image
   m_TagString: Untagged
@@ -1231,6 +1248,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389187409}
   m_CullTransparentMesh: 1
+--- !u!114 &1389187413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389187409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01807c542fa7ec94bb4813f91b373f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 15}
+  rotateInterval: 0.5
+  stayRotatedTime: 1
 --- !u!1 &1458394466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1274,7 @@ GameObject:
   - component: {fileID: 1458394467}
   - component: {fileID: 1458394469}
   - component: {fileID: 1458394468}
+  - component: {fileID: 1458394470}
   m_Layer: 5
   m_Name: Pencil_Image
   m_TagString: Untagged
@@ -1306,6 +1339,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458394466}
   m_CullTransparentMesh: 1
+--- !u!114 &1458394470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458394466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01807c542fa7ec94bb4813f91b373f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 15}
+  rotateInterval: 0.5
+  stayRotatedTime: 1
 --- !u!1 &1603416257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1497,7 @@ GameObject:
   - component: {fileID: 1650553127}
   - component: {fileID: 1650553129}
   - component: {fileID: 1650553128}
+  - component: {fileID: 1650553130}
   m_Layer: 5
   m_Name: Erase_Image
   m_TagString: Untagged
@@ -1513,6 +1562,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650553126}
   m_CullTransparentMesh: 1
+--- !u!114 &1650553130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650553126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01807c542fa7ec94bb4813f91b373f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 15}
+  rotateInterval: 0.5
+  stayRotatedTime: 1
 --- !u!1 &2129435820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1588,7 @@ GameObject:
   - component: {fileID: 2129435821}
   - component: {fileID: 2129435823}
   - component: {fileID: 2129435822}
+  - component: {fileID: 2129435824}
   m_Layer: 5
   m_Name: Sacapuntas_Image
   m_TagString: Untagged
@@ -1588,6 +1653,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129435820}
   m_CullTransparentMesh: 1
+--- !u!114 &2129435824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129435820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01807c542fa7ec94bb4813f91b373f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationOffset: {x: 0, y: 0, z: 15}
+  rotateInterval: 0.5
+  stayRotatedTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
