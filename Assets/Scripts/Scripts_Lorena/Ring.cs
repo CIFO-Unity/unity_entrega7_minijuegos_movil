@@ -6,6 +6,7 @@ public class Ring : MonoBehaviour
     public string poolTag = "Ring";
     bool scored = false;
     public float despawnY = 11.6f;
+    public bool playerDead = false;
 
     void OnEnable()
     {
@@ -14,6 +15,8 @@ public class Ring : MonoBehaviour
 
     void Update()
     {
+        if (playerDead) return;
+
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         if (transform.position.y > despawnY)
