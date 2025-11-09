@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 74b0dc8744cc8524a93dece4c6374517
+guid: 454dbe94b4aee364ab36b57ba3454650
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7682862417510420845
-    second: MainMenuBG3_0
+      213: 3906140386965289246
+    second: MiniJuegosBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MainMenuBG3_0
+      name: MiniJuegosBG_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39ea71a365df06590800000000000000
-      internalID: -7682862417510420845
+      spriteID: e197fdf7cf5653630800000000000000
+      internalID: 3906140386965289246
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MainMenuBG3_0: -7682862417510420845
+      MiniJuegosBG_0: 3906140386965289246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
