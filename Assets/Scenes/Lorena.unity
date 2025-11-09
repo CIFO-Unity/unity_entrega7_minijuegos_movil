@@ -1810,7 +1810,7 @@ MonoBehaviour:
   maxX: 1.8
   initialSpawnInterval: 1.5
   minSpawnInterval: 0.5
-  difficultyIncreaseRate: 0.05
+  difficultyIncreaseRate: 0.03
   ringProbability: 0.5
   playerDead: 0
 --- !u!4 &957665443
