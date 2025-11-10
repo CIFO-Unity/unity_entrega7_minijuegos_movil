@@ -109,7 +109,3 @@ InitTestScene*.unity*
 # Ignorar asset TextMesh Pro específico generado localmente
 # Assets/TextMesh Pro/Resources/Fonts & Materials/Enchanted Land SDF 1.asset
 .vscode/settings.json
-
-# Ignorar sprites de naves personalizadas (cada usuario tiene sus propios sprites)
-/[Aa]ssets/Resources/Ships/*.png
-/[Aa]ssets/Resources/Ships/*.png.meta
