@@ -1,0 +1,100 @@
+using UnityEngine;
+using TMPro;
+
+/// <summary>
+/// Gestiona la UI del lobby en la escena Felix.
+/// Maneja los botones de crear/unirse a partida y valida el número de jugadores.
+/// </summary>
+public class LobbyManager : MonoBehaviour
+{
+    [Header("Referencias UI")]
+    [Tooltip("InputField donde el usuario escribe el número de jugadores (2-4)")]
+    public TMP_InputField maxPlayersInput;
+    
+    [Tooltip("Referencia al NetworkManager (se busca automáticamente si no se asigna)")]
+    public NetworkManager networkManager;
+
+    void Start()
+    {
+        // Buscar NetworkManager si no está asignado
+        if (networkManager == null)
+        {
+            networkManager = FindObjectOfType<NetworkManager>();
+            
+            if (networkManager == null)
+            {
+                Debug.LogError("❌ LobbyManager no encuentra NetworkManager!");
+            }
+        }
+
+        // Valor por defecto en el input: 2 jugadores
+        if (maxPlayersInput != null)
+        {
+            maxPlayersInput.text = "2";
+        }
+    }
+
+    /// <summary>
+    /// Llamado por el botón "Crear Partida".
+    /// Lee el número de jugadores del InputField y crea la partida.
+    /// </summary>
+    public void OnCreateGameClicked()
+    {
+        if (networkManager == null)
+        {
+            Debug.LogError("❌ NetworkManager no disponible");
+            return;
+        }
+
+        if (maxPlayersInput == null)
+        {
+            Debug.LogError("❌ maxPlayersInput no asignado");
+            return;
+        }
+
+        // Leer y validar el número de jugadores
+        string inputText = maxPlayersInput.text.Trim();
+        
+        if (string.IsNullOrEmpty(inputText))
+        {
+            Debug.LogWarning("⚠️ Por favor, ingresa el número de jugadores");
+            maxPlayersInput.text = "4"; // Valor por defecto
+            return;
+        }
+
+        if (!int.TryParse(inputText, out int maxPlayers))
+        {
+            Debug.LogWarning("⚠️ Número de jugadores inválido. Debe ser un número entre 2 y 4");
+            maxPlayersInput.text = "4";
+            return;
+        }
+
+        // Validar rango (2-4 jugadores)
+        if (maxPlayers < 2 || maxPlayers > 4)
+        {
+            Debug.LogWarning($"⚠️ Número de jugadores debe ser entre 2 y 4. Ingresaste: {maxPlayers}");
+            maxPlayersInput.text = "4";
+            return;
+        }
+
+        // Todo OK, crear partida
+        Debug.Log($"🎯 Creando partida para {maxPlayers} jugadores...");
+        networkManager.CreateGame(maxPlayers);
+    }
+
+    /// <summary>
+    /// Llamado por el botón "Unirse a Partida".
+    /// No necesita el número de jugadores (lo define el host).
+    /// </summary>
+    public void OnJoinGameClicked()
+    {
+        if (networkManager == null)
+        {
+            Debug.LogError("❌ NetworkManager no disponible");
+            return;
+        }
+
+        Debug.Log("🔗 Uniéndose a partida...");
+        networkManager.JoinGame();
+    }
+}
