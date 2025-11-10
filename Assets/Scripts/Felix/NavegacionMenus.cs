@@ -7,7 +7,8 @@ public class NavegacionMenus : MonoBehaviour
     private string escenaMainMenu = "MainMenu";
     private string escenaCreditos = "Creditos";
     private string escenaMiniJuegos = "MiniJuegos";
-    private string escenaAlbert = "Albert";
+    private string escenaMenuAlbert = "MainMenuAlbert";
+    private string escenaAlbert = "MinijuegoAlbert";
     private string escenaLorena = "Lorena";
     private string escenaFelix = "Felix";
 
@@ -22,17 +23,23 @@ public class NavegacionMenus : MonoBehaviour
             if (SceneManager.GetActiveScene().name == escenaMiniJuegos || SceneManager.GetActiveScene().name == escenaCreditos)
             {
                 SceneManager.LoadScene(escenaMainMenu);
-            }else if (SceneManager.GetActiveScene().name == escenaAlbert || SceneManager.GetActiveScene().name == escenaLorena || SceneManager.GetActiveScene().name == escenaFelix)
+            }
+            else if (SceneManager.GetActiveScene().name == escenaMenuAlbert || SceneManager.GetActiveScene().name == escenaLorena || SceneManager.GetActiveScene().name == escenaFelix)
             {
                 SceneManager.LoadScene(escenaMiniJuegos);
-            }else if (SceneManager.GetActiveScene().name == escenaNavesEspaciales)
+            }
+            else if (SceneManager.GetActiveScene().name == escenaNavesEspaciales)
             {
                 SceneManager.LoadScene(escenaFelix);
+            }
+            else if (SceneManager.GetActiveScene().name == escenaAlbert)
+            {
+                SceneManager.LoadScene(escenaMenuAlbert);
             }
         }
     }
 
-    public void CargarEscenaAlbert() => SceneManager.LoadScene(escenaAlbert);
+    public void CargarEscenaAlbert() => SceneManager.LoadScene(escenaMenuAlbert);
     public void CargarEscenaLorena() => SceneManager.LoadScene(escenaLorena);
     public void CargarEscenaFelix() => SceneManager.LoadScene(escenaFelix);
     public void CargarEscenaCreditos() => SceneManager.LoadScene(escenaCreditos);

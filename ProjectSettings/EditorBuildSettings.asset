@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lorena.unity
     guid: cb1c1e30bbaa4c942927018b7f7ff455
   - enabled: 1
+    path: Assets/Scenes/Felix.unity
+    guid: 5bad8a1aedb185046948a979a5d705c5
+  - enabled: 1
     path: Assets/Scenes/Ender'sGame.unity
     guid: 93ddf789a83701643b38d1b6894620d0
   - enabled: 1
