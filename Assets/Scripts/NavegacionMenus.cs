@@ -11,6 +11,8 @@ public class NavegacionMenus : MonoBehaviour
     private string escenaLorena = "Lorena";
     private string escenaFelix = "Felix";
 
+    private string escenaNavesEspaciales = "Ender'sGame";
+
     void Update()
     {
         // Funciona con ESC en PC y con botón Atrás en Android real
@@ -23,6 +25,9 @@ public class NavegacionMenus : MonoBehaviour
             }else if (SceneManager.GetActiveScene().name == escenaAlbert || SceneManager.GetActiveScene().name == escenaLorena || SceneManager.GetActiveScene().name == escenaFelix)
             {
                 SceneManager.LoadScene(escenaMiniJuegos);
+            }else if (SceneManager.GetActiveScene().name == escenaNavesEspaciales)
+            {
+                SceneManager.LoadScene(escenaFelix);
             }
         }
     }
@@ -32,6 +37,7 @@ public class NavegacionMenus : MonoBehaviour
     public void CargarEscenaFelix() => SceneManager.LoadScene(escenaFelix);
     public void CargarEscenaCreditos() => SceneManager.LoadScene(escenaCreditos);
     public void CargarEscenaMiniJuegos() => SceneManager.LoadScene(escenaMiniJuegos);
+    public void CargarEscenaNavesEspaciales() => SceneManager.LoadScene(escenaNavesEspaciales);
 
     public void SalirDelJuego()
     {

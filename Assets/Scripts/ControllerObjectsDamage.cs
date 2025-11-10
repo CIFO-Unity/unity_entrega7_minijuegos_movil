@@ -26,17 +26,19 @@ public class ControllerObjectsDamage : MonoBehaviour
     {
         indexListGameObjectsDamage = new int[listGameObjectsDamage.Length];
         
-        // Detectar si existe NetworkManager
+        // Detectar si existe NetworkManager Y si está en una partida activa
         networkManager = FindFirstObjectByType<NetworkManager>();
-        if (networkManager != null)
+        if (networkManager != null && networkManager.isGameStarted)
         {
-            // Si existe NetworkManager, esperamos a que inicie el juego
+            // NetworkManager existe Y el juego multijugador está activo
             isMultiplayer = true;
-            Debug.Log("🌐 NetworkManager detectado - Esperando inicio de juego...");
+            spawnEnabled = true; // En multiplayer, enemigos controlados por servidor
+            Debug.Log("🌐 NetworkManager detectado Y juego iniciado - Enemigos controlados por servidor");
         }
         else
         {
-            // No hay NetworkManager = modo single player
+            // No hay NetworkManager activo = modo single player
+            isMultiplayer = false;
             spawnEnabled = true;
             InvokeRepeating("CambiarPosicion", 2.0f, 2.0f);
             Debug.Log("🎮 ControllerObjectsDamage en modo SINGLE PLAYER - Spawning local activado");
@@ -48,11 +50,13 @@ public class ControllerObjectsDamage : MonoBehaviour
 
     void Update()
     {
-        // Si estamos en multiplayer y el juego ha iniciado, habilitar spawning controlado por servidor
-        if (isMultiplayer && !spawnEnabled && networkManager != null && networkManager.isGameStarted)
+        // Si NetworkManager se activa después (caso raro), habilitar modo multiplayer
+        if (!isMultiplayer && networkManager != null && networkManager.isGameStarted)
         {
+            isMultiplayer = true;
             spawnEnabled = true;
-            Debug.Log("🌐 ControllerObjectsDamage en modo MULTIPLAYER - Enemigos controlados por servidor");
+            CancelInvoke("CambiarPosicion"); // Detener spawn local
+            Debug.Log("🌐 NetworkManager activado durante el juego - Cambiando a modo multiplayer");
         }
     }
 
