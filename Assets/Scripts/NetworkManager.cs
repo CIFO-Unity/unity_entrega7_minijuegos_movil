@@ -15,7 +15,7 @@ public class NetworkManager : MonoBehaviour
     // ========== CONFIGURACIÓN DE RED ==========
     [Header("Configuración de red")]
     public string serverIp = "161.22.45.17"; //"127.0.0.1"; // IP del servidor (localhost para pruebas)
-    public int serverPort = 6000;         // Puerto del servidor
+    public int serverPort = 5560;         // Puerto del servidor
 
     // ========== PREFABS ==========
     [Header("Prefabs de jugador")]
@@ -511,6 +511,14 @@ public class NetworkManager : MonoBehaviour
                 {
                     player2DScript.enabled = false;
                     Debug.Log($"🔇 Desactivado script Player2D en jugador remoto");
+                }
+                
+                // Hacer el Rigidbody2D kinematic para que no sea empujado por físicas pero siga detectando colisiones
+                var rigidbody = obj.GetComponent<Rigidbody2D>();
+                if (rigidbody != null)
+                {
+                    rigidbody.bodyType = RigidbodyType2D.Kinematic; // No recibe fuerzas pero detecta colisiones
+                    Debug.Log($"🔧 Rigidbody2D configurado como Kinematic en jugador remoto");
                 }
                 
                 players[p.playerId] = obj;
