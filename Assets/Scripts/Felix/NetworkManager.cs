@@ -513,14 +513,6 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log($"🔇 Desactivado script Player2D en jugador remoto");
                 }
                 
-                // Hacer el Rigidbody2D kinematic para que no sea empujado por físicas pero siga detectando colisiones
-                var rigidbody = obj.GetComponent<Rigidbody2D>();
-                if (rigidbody != null)
-                {
-                    rigidbody.bodyType = RigidbodyType2D.Kinematic; // No recibe fuerzas pero detecta colisiones
-                    Debug.Log($"🔧 Rigidbody2D configurado como Kinematic en jugador remoto");
-                }
-                
                 players[p.playerId] = obj;
                 
                 Debug.Log($"✅ Creado jugador remoto: {p.name} ({p.playerId}) en posición {spawnPos}");
