@@ -16,12 +16,28 @@ public class MissilePlayer : MonoBehaviour
 
     [SerializeField]
     private GameObject accumulator;
+    
     void Start()
     {
         positionCementeryAllObjects = 50;
         positionCementeryMissiles = 50;
         incrementMissiles = 5;
         incrementObjectsEnemies = 2;
+        
+        // Búsqueda automática de referencias
+        if (explosionsMissiles == null)
+        {
+            explosionsMissiles = GameObject.Find("ExplosionsMissiles");
+        }
+        
+        if (accumulator == null)
+        {
+            accumulator = GameObject.Find("Accumulator");
+            if (accumulator == null)
+            {
+                accumulator = FindFirstObjectByType<UIController>()?.gameObject;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -48,7 +64,6 @@ public class MissilePlayer : MonoBehaviour
                        other.gameObject.CompareTag("Enemy3") || 
                        other.gameObject.CompareTag("Asteroid");
         
-        // Ignorar colisiones con otros objetos (jugador, otros misiles, etc.)
         if (!isEnemy) return;
         
         // Evitar múltiples puntuaciones por el mismo misil
@@ -56,16 +71,35 @@ public class MissilePlayer : MonoBehaviour
         hasScored = true;
         
         //print("Numero de veces que entro trigger.");
-        accumulator.gameObject.GetComponent<UIController>().increaseScore(10);
-        listSounds[0].gameObject.GetComponent<AudioSource>().Play();
-        explosionsMissiles.gameObject.transform.GetChild(indexExplosionsArray).transform.position = this.gameObject.transform.position;
-        explosionsMissiles.gameObject.transform.GetChild(indexExplosionsArray).gameObject.SetActive(true);
+        
+        // Añadir puntuación solo si accumulator existe
+        if (accumulator != null)
+        {
+            var uiController = accumulator.GetComponent<UIController>();
+            if (uiController != null)
+            {
+                uiController.increaseScore(10);
+            }
+        }
+        
+        // Reproducir sonido solo si existe
+        if (listSounds != null && listSounds.Length > 0 && listSounds[0] != null)
+        {
+            listSounds[0].GetComponent<AudioSource>()?.Play();
+        }
+        
+        // Mostrar explosión solo si existe
+        if (explosionsMissiles != null && explosionsMissiles.transform.childCount > 0)
+        {
+            explosionsMissiles.transform.GetChild(indexExplosionsArray).transform.position = this.gameObject.transform.position;
+            explosionsMissiles.transform.GetChild(indexExplosionsArray).gameObject.SetActive(true);
 
-        Invoke("HideExplosion", 0.5f);
+            Invoke("HideExplosion", 0.5f);
 
-        indexExplosionsArray++;
-        if (indexExplosionsArray >= explosionsMissiles.transform.childCount)
-            indexExplosionsArray = 0;
+            indexExplosionsArray++;
+            if (indexExplosionsArray >= explosionsMissiles.transform.childCount)
+                indexExplosionsArray = 0;
+        }
 
         //Damage Object (mover enemigo al cementerio)
         other.gameObject.transform.position = new Vector2(positionCementeryAllObjects, 8.0f);

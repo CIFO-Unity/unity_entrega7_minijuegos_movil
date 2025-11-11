@@ -96,6 +96,20 @@ public class ControllerObjectsDamage : MonoBehaviour
         
         // Spawnnear el enemigo desde el pool usando el índice exacto del servidor
         GameObject enemyPool = listGameObjectsDamage[enemyIndex];
+        
+        // Validar que el pool tenga hijos disponibles
+        if (enemyPool.transform.childCount == 0)
+        {
+            Debug.LogWarning($"⚠️ Pool de enemigos vacío para índice {enemyIndex}");
+            return;
+        }
+        
+        // Asegurar que el índice interno esté dentro del rango
+        if (indexListGameObjectsDamage[enemyIndex] >= enemyPool.transform.childCount)
+        {
+            indexListGameObjectsDamage[enemyIndex] = 0;
+        }
+        
         Transform enemy = enemyPool.transform.GetChild(indexListGameObjectsDamage[enemyIndex]);
         
         enemy.position = new Vector2(posX, posY);

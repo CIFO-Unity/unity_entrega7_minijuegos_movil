@@ -365,7 +365,7 @@ public class NetworkManager : MonoBehaviour
         {
             // Llamar al método público para spawnnear desde el servidor con el índice exacto
             controller.SpawnEnemyFromServer(msg.enemyIndex, msg.posX, msg.posY, msg.velocityX, msg.velocityY);
-            Debug.Log($"👾 Enemigo sincronizado: {msg.enemyId} índice {msg.enemyIndex} en ({msg.posX:F2}, {msg.posY:F2})");
+            // Debug.Log($"👾 Enemigo sincronizado: {msg.enemyId} índice {msg.enemyIndex} en ({msg.posX:F2}, {msg.posY:F2})");
         }
         else
         {
@@ -446,7 +446,7 @@ public class NetworkManager : MonoBehaviour
             posY = posY
         };
         SendJson(msg);
-        Debug.Log($"🔫 SHOOT enviado: ({posX:F2}, {posY:F2})");
+        // Debug.Log($"🔫 SHOOT enviado: ({posX:F2}, {posY:F2})");
     }
 
     /// <summary>
@@ -495,7 +495,7 @@ public class NetworkManager : MonoBehaviour
                     {
                         Debug.LogError($"❌ ERROR CRÍTICO: otherPlayerPrefab NO está asignado y localPlayer2D tampoco existe!");
                         Debug.LogError($"❌ No se puede crear jugador remoto: {p.name} ({p.playerId})");
-                        Debug.LogError($"❌ SOLUCIÓN: Crea un prefab de Player2D o asigna otherPlayerPrefab en el Inspector");
+                        Debug.LogError($"❌ SOLUCIÓN: Asigna 'PLayerPhantom' en otherPlayerPrefab del NetworkManager en Inspector");
                         return;
                     }
                 }
@@ -505,17 +505,31 @@ public class NetworkManager : MonoBehaviour
                 var obj = Instantiate(otherPlayerPrefab, spawnPos, Quaternion.identity);
                 obj.name = "RemotePlayer_" + p.playerId;
                 
-                // Desactivar el script Player2D en el jugador remoto (no debe controlarse localmente)
+                // Verificar si el prefab tiene GhostShipCollision EN LA RAÍZ
+                var ghostScript = obj.GetComponent<GhostShipCollision>();
+                if (ghostScript == null)
+                {
+                    obj.AddComponent<GhostShipCollision>();
+                }
+                
+                // IMPORTANTE: Remover GhostShipCollision de los hijos (misiles)
+                var childColliders = obj.GetComponentsInChildren<GhostShipCollision>();
+                foreach (var child in childColliders)
+                {
+                    if (child.gameObject != obj)
+                    {
+                        Destroy(child);
+                    }
+                }
+                
+                // Desactivar el script Player2D en el jugador remoto
                 var player2DScript = obj.GetComponent<Player2D>();
                 if (player2DScript != null)
                 {
                     player2DScript.enabled = false;
-                    Debug.Log($"🔇 Desactivado script Player2D en jugador remoto");
                 }
                 
                 players[p.playerId] = obj;
-                
-                Debug.Log($"✅ Creado jugador remoto: {p.name} ({p.playerId}) en posición {spawnPos}");
             }
 
             // ===== ACTUALIZAR POSICIÓN DEL JUGADOR REMOTO =====
@@ -589,7 +603,7 @@ public class NetworkManager : MonoBehaviour
             udpClient.Send(data, data.Length, serverEndPoint);
             
             // Log temporal para debugging
-            Debug.Log($"💓 HEARTBEAT enviado - {playerId}");
+            // Debug.Log($"💓 HEARTBEAT enviado - {playerId}");
         }
         catch (Exception e)
         {

@@ -29,7 +29,7 @@ public class Earth : MonoBehaviour
     {
         // Ignorar colisiones con misiles y naves (locales y remotas)
         string tag = other.gameObject.tag;
-        if (tag == "MissilePlayer" || tag == "Player" || tag == "Albert" || tag == "Lorena")
+        if (tag == "MissilePlayer" || tag == "Player" || tag == "Albert")
         {
             return; // Ignorar estas colisiones
         }

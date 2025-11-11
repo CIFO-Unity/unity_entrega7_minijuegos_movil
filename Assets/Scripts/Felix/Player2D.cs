@@ -166,7 +166,10 @@ public class Player2D : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Ignorar colisiones con misiles propios y naves fantasma
         if (other.gameObject.CompareTag("MissilePlayer")) return; // si colisiona con el propio misil no hacemos nada
+        if (other.gameObject.CompareTag("Albert")) return; // ignorar naves fantasma
+        
         listSounds[0].gameObject.GetComponent<AudioSource>().Play();
         if (selectorTrigger) return; // si ya ha colisionado, no hacemos nada ya que tiene 3 triggers 1 impacto directo 3 llamadas al OnTriggerEnter2D --> MAL
         selectorTrigger = true; // marcamos que ya ocurrió una colisión

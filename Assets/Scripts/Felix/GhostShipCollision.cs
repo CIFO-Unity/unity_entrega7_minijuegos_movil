@@ -14,20 +14,36 @@ public class GhostShipCollision : MonoBehaviour
 
     void Start()
     {
-        // Si no se asignó manualmente, buscar en la escena
+        // Buscar automáticamente el GameObject de explosiones en la escena
         if (explosions == null)
         {
-            explosions = GameObject.Find("Explosions");
+            explosions = GameObject.Find("ExplosionsMissiles");
             
             if (explosions == null)
             {
-                Debug.LogWarning("⚠️ GhostShipCollision: No se encontró el GameObject 'Explosions' en la escena");
+                GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+                foreach (GameObject obj in allObjects)
+                {
+                    if (obj.name.Contains("Explosion") && obj.transform.childCount >= 3)
+                    {
+                        explosions = obj;
+                        break;
+                    }
+                }
             }
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // IGNORAR colisiones con naves (locales y fantasmas) y misiles
+        if (collision.gameObject.CompareTag("Player") || 
+            collision.gameObject.CompareTag("Albert") ||
+            collision.gameObject.name.Contains("Missile"))
+        {
+            return; // No hacer nada con estas colisiones
+        }
+        
         // Solo destruir asteroides y enemigos
         if (collision.gameObject.CompareTag("Asteroid") || 
             collision.gameObject.CompareTag("Enemy1") || 
@@ -39,7 +55,7 @@ public class GhostShipCollision : MonoBehaviour
     }
 
     /// <summary>
-    /// Destruye el objeto con efectos opcionales
+    /// Desactiva el objeto (sistema de pooling) con efectos opcionales
     /// </summary>
     void DestroyObject(GameObject obj)
     {
@@ -65,8 +81,14 @@ public class GhostShipCollision : MonoBehaviour
             AudioSource.PlayClipAtPoint(explosionSound, obj.transform.position);
         }
 
-        // Destruir el objeto
-        Destroy(obj);
+        // NO DESTRUIR: Mover al "cementerio" para reutilizar (sistema de pooling)
+        obj.transform.position = new Vector2(50f, 8f);
+        var rb = obj.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 0.0f;
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     /// <summary>
