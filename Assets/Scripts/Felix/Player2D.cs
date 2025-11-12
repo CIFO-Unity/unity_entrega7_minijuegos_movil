@@ -187,8 +187,8 @@ public class Player2D : MonoBehaviour
         //Destroy(other.gameObject);
         
         //lo descomentaremos para produccion
-        //Destroy(this.gameObject);
-        //accumulator.gameObject.GetComponent<UIController>().GameOver();
+        Destroy(this.gameObject);
+        accumulator.gameObject.GetComponent<UIController>().GameOver();
         
     }
 

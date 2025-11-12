@@ -146,6 +146,30 @@ public class LobbyUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Mostrar inmediatamente el panel del lobby en modo "esperando".
+    /// Útil para activar la UI cuando el usuario pulsa Create/Join antes de recibir LOBBY_UPDATE.
+    /// </summary>
+    /// <param name="maxPlayers">Número máximo de jugadores esperado (por defecto 4)</param>
+    public void ShowWaitingLobby(int maxPlayers = 4)
+    {
+        if (lobbyPanel != null && !lobbyPanel.activeSelf)
+        {
+            lobbyPanel.SetActive(true);
+            Debug.Log("✅ LobbyPanel activado desde ShowWaitingLobby");
+        }
+
+        if (playerListText != null)
+        {
+            playerListText.text = $"=== LOBBY (0/{maxPlayers}) ===\n\nEsperando jugadores...\n";
+        }
+
+        if (statusText != null)
+        {
+            statusText.text = $"⏳ Esperando jugadores... (0/{maxPlayers})";
+        }
+    }
+
+    /// <summary>
     /// Llamado por el NetworkManager cuando recibe un mensaje GAME_START del servidor.
     /// Inicia la transición a la escena de juego.
     /// </summary>

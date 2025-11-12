@@ -13,13 +13,18 @@ public class LobbyManager : MonoBehaviour
     
     [Tooltip("Referencia al NetworkManager (se busca automáticamente si no se asigna)")]
     public NetworkManager networkManager;
+    [Header("Referencias UI (opcional)")]
+    [Tooltip("Referencia al componente LobbyUI. Si se deja vacío, se buscará automáticamente en la escena.")]
+    public LobbyUI lobbyUI;
+    [Tooltip("Panel del lobby (GameObject). Si se asigna aquí, se activará directamente sin depender de LobbyUI).")]
+    public GameObject lobbyPanel;
 
     void Start()
     {
         // Buscar NetworkManager si no está asignado
         if (networkManager == null)
         {
-            networkManager = FindObjectOfType<NetworkManager>();
+            networkManager = FindFirstObjectByType<NetworkManager>();
             
             if (networkManager == null)
             {
@@ -32,6 +37,19 @@ public class LobbyManager : MonoBehaviour
         {
             maxPlayersInput.text = "2";
         }
+            // Si no se asignó en el Inspector, cachear referencia a LobbyUI (usar API no obsoleta)
+            if (lobbyUI == null)
+            {
+                lobbyUI = FindFirstObjectByType<LobbyUI>();
+                if (lobbyUI == null)
+                {
+                    Debug.Log("⚠️ LobbyUI no encontrado en la escena (se activará cuando exista)");
+                }
+                else
+                {
+                    Debug.Log($"✅ LobbyUI encontrado automáticamente: {lobbyUI.name}");
+                }
+            }
     }
 
     /// <summary>
@@ -80,6 +98,23 @@ public class LobbyManager : MonoBehaviour
         // Todo OK, crear partida
         Debug.Log($"🎯 Creando partida para {maxPlayers} jugadores...");
         networkManager.CreateGame(maxPlayers);
+        // Mostrar inmediatamente el panel del lobby en modo "esperando"
+        // Preferir activar el panel directo si está asignado en este componente
+        if (lobbyPanel != null)
+        {
+            lobbyPanel.SetActive(true);
+        }
+        else
+        {
+            if (lobbyUI == null)
+            {
+                lobbyUI = FindFirstObjectByType<LobbyUI>();
+            }
+            if (lobbyUI != null)
+            {
+                lobbyUI.ShowWaitingLobby(maxPlayers);
+            }
+        }
     }
 
     /// <summary>
@@ -96,5 +131,22 @@ public class LobbyManager : MonoBehaviour
 
         Debug.Log("🔗 Uniéndose a partida...");
         networkManager.JoinGame();
+        // Mostrar inmediatamente el panel de lobby en modo "esperando" (sin conocer maxPlayers)
+        // Preferir activar el panel directo si está asignado en este componente
+        if (lobbyPanel != null)
+        {
+            lobbyPanel.SetActive(true);
+        }
+        else
+        {
+            if (lobbyUI == null)
+            {
+                lobbyUI = FindFirstObjectByType<LobbyUI>();
+            }
+            if (lobbyUI != null)
+            {
+                lobbyUI.ShowWaitingLobby();
+            }
+        }
     }
 }
